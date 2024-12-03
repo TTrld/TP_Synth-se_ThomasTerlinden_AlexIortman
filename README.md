@@ -1,1 +1,1 @@
-# TP_Synthse - Thomas Terlinden & Alex Iortoman
+# TP_Synthèse - Thomas Terlinden & Alex Iortoman
