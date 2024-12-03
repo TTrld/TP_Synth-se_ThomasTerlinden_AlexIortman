@@ -17,43 +17,42 @@ char Outputestline1[BUFSIZE] = "Bienvenue dans le Shell ENSEA.\nPour quitter, ta
 char Endshell[BUFSIZE] = "enseash % ";
 char Command[BUFSIZE];
 
-
 int main(int argc, char* argv[]) {
-	write(STDOUT_FILENO, Shellstart, strlen(Shellstart));
+	
+    write(STDOUT_FILENO, Shellstart, strlen(Shellstart));
     write(STDOUT_FILENO, Outputestline1, strlen(Outputestline1));
     write(STDOUT_FILENO,Endshell,strlen(Endshell));
-
     
     while(1){
-		ret = read(STDIN_FILENO,Command,BUFSIZE);
-		if (ret < 0){
-			perror("unknown command");
-			exit(EXIT_FAILURE);
-		}
+	ret = read(STDIN_FILENO,Command,BUFSIZE);
+	if (ret < 0){
+		perror("unknown command");
+		exit(EXIT_FAILURE);
+	}
 		
-		if (ret > 0 && Command[ret - 1] == '\n') {
-			Command[ret - 1] = '\0';
+	if (ret > 0 && Command[ret - 1] == '\n') {
+		Command[ret - 1] = '\0';
         }
         
         Command[ret]='\0';
         
-		if (strcmp(Command ,"exit")==0){
-			write(STDOUT_FILENO,"\nBye Bye...\n",12);
-			break;
-		}
+	if (strcmp(Command ,"exit")==0){
+		write(STDOUT_FILENO,"\nBye Bye...\n",12); //only change from Q2.
+		break;
+	}
 		
-		pid_t pid = fork();
+	pid_t pid = fork();
         if (pid < 0) {
             perror("Erreur fork");
             exit(EXIT_FAILURE);
         }
-		
-
+	
         if (pid == 0) {
             execlp(Command, Command, (char *)NULL);
             perror("Erreur d'exécution de la commande");
             exit(EXIT_FAILURE);
-        } else {
+        } 
+	else {
             wait(NULL);
             write(STDOUT_FILENO,Endshell,strlen(Endshell));
         }
