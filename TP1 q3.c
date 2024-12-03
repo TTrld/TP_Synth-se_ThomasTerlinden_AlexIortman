@@ -38,7 +38,7 @@ int main(int argc, char* argv[]) {
         Command[ret]='\0';
         
 		if (strcmp(Command ,"exit")==0){
-			write(STDOUT_FILENO,"Bye Bye...\n",12);
+			write(STDOUT_FILENO,"\nBye Bye...\n",12);
 			break;
 		}
 		
