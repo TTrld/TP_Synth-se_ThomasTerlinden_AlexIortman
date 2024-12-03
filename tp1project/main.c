@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "string.h"
 #include <stdio.h>
 #include <sys/types.h>
 //#include <sys/wait.h>
@@ -16,7 +17,7 @@ int main(int argc, char* argv[]) {
     char Outputestline1[BUFSIZE] = "Bienvenue dans le Shell ENSEA.\nPour quitter, tapez 'exit'.\n";
     char endshell[BUFSIZE] = "enseash %\n";
 
-    write(STDOUT_FILENO, shellstart, BUFSIZE);
-    write(STDOUT_FILENO, Outputestline1, BUFSIZE);
-    write(STDOUT_FILENO, endshell, BUFSIZE);
+    write(STDOUT_FILENO, shellstart, strlen(shellstart));
+    write(STDOUT_FILENO, Outputestline1, strlen(Outputestline1));
+    write(STDOUT_FILENO, endshell, strlen(endshell));
 }
