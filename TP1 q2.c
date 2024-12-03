@@ -40,17 +40,18 @@ int main(int argc, char* argv[]) {
 		break;
 	}
 		
-	pid_t pid = fork();
+	pid_t pid = fork(); // child program to execute a shell command (transfer of execution) while the father runs. 
         if (pid < 0) {
             perror("Error : fork");
             exit(EXIT_FAILURE);
 	}
-	// child program to execute a shell command (transfer of execution) while the father runs. 
+	//Child
         if (pid == 0) {
             execlp(Command, Command, (char *)NULL); // execution of Command
 	    perror("Command execution error");
             exit(EXIT_FAILURE);
         } 
+	// Father waits for child
 	else {
             wait(NULL);
             write(STDOUT_FILENO,Endshell,strlen(Endshell));
