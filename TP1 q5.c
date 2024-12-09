@@ -64,6 +64,7 @@ int main(int argc, char* argv[]) {
         } else {
             clock_gettime(CLOCK_MONOTONIC, &start);// the father begin to count when the son begin the command
             waitpid(pid, &status, 0);
+	    sleep(1);//so the waiting will be approximatively 1000ms 
             clock_gettime(CLOCK_MONOTONIC, &end);//the father end the count
             
             elapsed_time_ms = (end.tv_sec - start.tv_sec) * 1000 + (end.tv_nsec - start.tv_nsec) / 1000000;
