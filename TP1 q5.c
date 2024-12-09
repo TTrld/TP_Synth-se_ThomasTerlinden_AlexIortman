@@ -13,7 +13,7 @@ int fd;
 char buf[BUFSIZE];
 ssize_t ret;
 int status;
-struct timespec start, end;
+struct timespec start, end;  //used to calculated the elapsed_time_ms
 long elapsed_time_ms;
 
 
