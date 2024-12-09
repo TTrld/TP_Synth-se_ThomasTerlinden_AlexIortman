@@ -7,7 +7,7 @@ For question 1, we wrote a welcoming message by writing in the console (STDOUT_F
 
 For question 2, we need to fork the current process so that the child process could be replaced by the execution of the called programm. 
 
-For question 3, we wrote "Bye bye...".
+For question 3, we wrote "Bye bye..." when we close the shell.
 
 For question 4, you should test the programm by calling the "fonction.c" in our shell. The output should be exit:111.
 
